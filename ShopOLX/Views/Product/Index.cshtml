@@ -1,8 +1,12 @@
 ﻿﻿@* Set view model type *@
 @model List<ShopOLX.Data.Entities.Product>;
+@{
+    int count = 0;
+}
 
 <h1>Product List</h1>
 <p>You can manage all the available products here...</p>
+@*<button type="button" class="btn btn-success mb-5">Add Product</button>*@
 
 <table class="table table-striped">
     <thead>
@@ -11,7 +15,9 @@
             <th scope="col">Image</th>
             <th scope="col">Name</th>
             <th scope="col">Price</th>
+            <th scope="col">City</th>
             <th scope="col">Status</th>
+            <th scope="col">Is Used</th>
             <th scope="col">Category</th>
             <th scope="col">Actions</th>
         </tr>
@@ -19,11 +25,13 @@
     <tbody>
         @foreach (var i in Model)
         {
+            count++;
             <tr class="align-middle">
-                <th scope="row">@i.Id</th>
-                <td><img src="@i.ImageUrl" class="w-25"></td>
+                <th scope="row">@count</th>
+                <td><img src="@i.ImageUrl" style="width: 100px"></td>
                 <td>@i.Name</td>
                 <td>@i.Price$</td>
+                <td>@i.City</td>
                 <td>
                     @if (i.InStock)
                     {
@@ -34,9 +42,20 @@
                         <span class="badge bg-secondary">Out of Stock</span>
                     }
                 </td>
+                    <td>
+                    @if (i.IsUsed)
+                    {
+                            <span class="badge bg-success">New</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">Were Used</span>
+                    }
+                    </td>
                 <td>@i.CategoryId</td>
                 <td>
-                    <a asp-action="Delete" asp-route-id="@i.Id" class="btn btn-danger">Delete</a>
+                    <a asp-action="Show" asp-route-id="@i.Id" asp-area="" asp-controller="Product" asp-action="ShowProduct" class="btn btn-secondary"><img src="./images/eye.png" style="width: 30px" /></a>
+                    <a asp-action="Delete" asp-route-id="@i.Id" class="btn btn-danger" style="background-color: #ff3f5b"><img src="./images/trash-bin.png" style="width: 30px" /></a>
                 </td>
             </tr>
         }
