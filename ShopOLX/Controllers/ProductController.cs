@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using ShopOLX.Data;
 using ShopOLX.Data.Entities;
 
@@ -8,7 +9,11 @@ namespace ShopOLX.Controllers
     {
         ShopDbContext ctx = new ShopDbContext();
 
-        // Get all products
+        private void LoadCategories()
+        {
+            this.ViewBag.Categories = new SelectList(ctx.Categories.ToList(), "Id", "Name");
+        }
+
         public IActionResult Index()
         {
             var products = ctx.Products.ToList();
@@ -16,7 +21,6 @@ namespace ShopOLX.Controllers
             return View(products);
         }
 
-        // Delete product by ID
         public IActionResult Delete(int id)
         {
             var item = ctx.Products.Find(id);
@@ -24,20 +28,55 @@ namespace ShopOLX.Controllers
             if (item == null) return NotFound();
 
             ctx.Products.Remove(item);
-            ctx.SaveChanges(); // delete from db
+            ctx.SaveChanges();
 
             return RedirectToAction("Index");
         }
 
-        //Show product by ID
-        public IActionResult Show(int id)
+        [HttpGet]
+        public IActionResult Create()
+        {
+            LoadCategories();
+            
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Product prod)
+        {
+            ctx.Products.Add(prod);
+            ctx.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
         {
             var item = ctx.Products.Find(id);
 
             if (item == null) return NotFound();
 
-            //ctx.Products.Remove(item);
-            //ctx.SaveChanges(); // delete from db
+            LoadCategories();
+
+            return View(item);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product prod)
+        {
+            ctx.Products.Update(prod);
+            ctx.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Show(int id)
+        {
+            var item = ctx.Products.Find(id);
+
+            if (item == null) return NotFound();
 
             ViewBag.Message = item;
             
