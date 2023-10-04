@@ -1,13 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataAccess.Data;
+using DataAccess.Data.Entities;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using ShopOLX.Data;
-using ShopOLX.Data.Entities;
 
 namespace ShopOLX.Controllers
 {
     public class ProductController : Controller
     {
-        ShopDbContext ctx = new ShopDbContext();
+        private readonly ShopDbContext ctx;
+        public ProductController(ShopDbContext ctx)
+        {
+            this.ctx = ctx;
+        }
 
         private void LoadCategories()
         {
@@ -44,6 +48,12 @@ namespace ShopOLX.Controllers
         [HttpPost]
         public IActionResult Create(Product prod)
         {
+            if (!ModelState.IsValid)
+            {
+                LoadCategories();
+                return View(prod);
+            }
+
             ctx.Products.Add(prod);
             ctx.SaveChanges();
 
@@ -65,6 +75,12 @@ namespace ShopOLX.Controllers
         [HttpPost]
         public IActionResult Edit(Product prod)
         {
+            if (!ModelState.IsValid)
+            {
+                LoadCategories();
+                return View(prod);
+            }
+
             ctx.Products.Update(prod);
             ctx.SaveChanges();
 

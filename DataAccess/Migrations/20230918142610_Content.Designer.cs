@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ShopOLX.Data;
+using DataAccess.Data;
 
 #nullable disable
 
-namespace ShopOLX.Migrations
+namespace DataAccess.Migrations
 {
     [DbContext(typeof(ShopDbContext))]
     [Migration("20230918142610_Content")]

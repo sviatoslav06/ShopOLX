@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ShopOLX.Data;
+using DataAccess.Data;
 
 #nullable disable
 
-namespace ShopOLX.Migrations
+namespace DataAccess.Migrations
 {
     [DbContext(typeof(ShopDbContext))]
-    [Migration("20230919204938_Description_01")]
-    partial class Description_01
+    [Migration("20230918140245_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -111,17 +111,7 @@ namespace ShopOLX.Migrations
                     b.Property<bool>("InStock")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsUsed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Mail")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -140,86 +130,62 @@ namespace ShopOLX.Migrations
                             Id = 1,
                             CategoryId = 1,
                             City = "Rivne",
-                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
                             Discount = 5,
                             ImageUrl = "https://applecity.com.ua/image/cache/catalog/0iphone/ipohnex/iphone-x-black-1000x1000.png",
                             InStock = false,
-                            IsUsed = false,
-                            Mail = "some@mail.com",
                             Name = "iPhone X",
-                            Phone = "+380000000000",
                             Price = 650m
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 2,
-                            City = "Kyiv",
-                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            City = "Rivne",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_727192-CBT53879999753_022023-V.jpg",
                             InStock = false,
-                            IsUsed = true,
-                            Mail = "some@mail.com",
                             Name = "PowerBall",
-                            Phone = "+380000000000",
                             Price = 45.5m
                         },
                         new
                         {
                             Id = 3,
                             CategoryId = 3,
-                            City = "Lviv",
-                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            City = "Rivne",
                             Discount = 15,
                             ImageUrl = "https://www.seekpng.com/png/detail/316-3168852_nike-air-logo-t-shirt-nike-t-shirt.png",
                             InStock = false,
-                            IsUsed = true,
-                            Mail = "some@mail.com",
                             Name = "Nike T-Shirt",
-                            Phone = "+380000000000",
                             Price = 189m
                         },
                         new
                         {
                             Id = 4,
                             CategoryId = 1,
-                            City = "Lutsk",
-                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            City = "Rivne",
                             ImageUrl = "https://sota.kh.ua/image/cache/data/Samsung-2/samsung-s23-s23plus-blk-01-700x700.webp",
                             InStock = false,
-                            IsUsed = false,
-                            Mail = "some@mail.com",
                             Name = "Samsung S23",
-                            Phone = "+380000000000",
                             Price = 1200m
                         },
                         new
                         {
                             Id = 5,
                             CategoryId = 6,
-                            City = "Odessa",
-                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            City = "Rivne",
                             ImageUrl = "https://cdn.shopify.com/s/files/1/0046/1163/7320/products/69ee701e-e806-4c4d-b804-d53dc1f0e11a_grande.jpg",
                             InStock = false,
-                            IsUsed = false,
-                            Mail = "some@mail.com",
                             Name = "Air Ball",
-                            Phone = "+380000000000",
                             Price = 50m
                         },
                         new
                         {
                             Id = 6,
                             CategoryId = 1,
-                            City = "Zhutomur",
-                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            City = "Rivne",
                             Discount = 20,
                             ImageUrl = "https://newtime.ua/image/import/catalog/mac/macbook_pro/MacBook-Pro-16-2019/MacBook-Pro-16-Space-Gray-2019/MacBook-Pro-16-Space-Gray-00.webp",
                             InStock = false,
-                            IsUsed = true,
-                            Mail = "some@mail.com",
                             Name = "MacBook Pro 2019",
-                            Phone = "+380000000000",
                             Price = 1200m
                         });
                 });

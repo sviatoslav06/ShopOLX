@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
-namespace ShopOLX.Data.Entities
+namespace DataAccess.Data.Entities
 {
     public class Product
     {

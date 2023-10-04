@@ -1,27 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ShopOLX.Data.Entities;
+using DataAccess.Data.Entities;
 
-namespace ShopOLX.Data
+namespace DataAccess.Data
 {
     public class ShopDbContext : DbContext
     {
-        public ShopDbContext()
-        {
-
-        }
+        public ShopDbContext() { }
+        public ShopDbContext(DbContextOptions options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-M1TF6E9\\SQLEXPRESS;" +
-                "Initial Catalog=Shop;" +
-                "Integrated Security=True;" +
-                "Connect Timeout=30;" +
-                "Encrypt=False;" +
-                "Trust Server Certificate=False;" +
-                "Application Intent=ReadWrite;" +
-                "Multi Subnet Failover=False");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

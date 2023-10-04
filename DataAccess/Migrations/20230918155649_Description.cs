@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace ShopOLX.Migrations
+namespace DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class Description : Migration
