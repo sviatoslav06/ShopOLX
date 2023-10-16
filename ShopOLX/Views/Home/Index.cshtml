@@ -7,13 +7,13 @@
         @foreach(var i in Model)
         {
             <div class="card p-4 shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 23%">
-                <img src="@i.ImageUrl" class="card-img-top" style="height: 50%" alt="...">
+                <a asp-controller="Home" asp-action="Show" asp-route-id="@i.Id" asp-area="" style="height: 300px"><img asp-controller ="Home" asp-action="Show" asp-route-id="@i.Id" asp-area="" src="@i.ImageUrl" class="card-img-top" style="height: 100%" alt="..."></a>
                 <div class="card-body gap-5 flex-wrap">
                     <h5 class="card-title">@i.Name</h5>
                     <p class="card-text">Price: @i.Price$</p>
                     <p class="card-text"><small class="text-body-secondary">Phone: @i.Phone</small></p>
                     <p class="card-text"><small class="text-body-secondary">City: @i.City</small></p>
-                    <a asp-controller ="Like" asp-action="Like" asp-route-id="@i.Id" type="button" class="btn btn-danger align-self-bottom"><img src="~/images/heart.png" style="width: 25%" /></a>
+                    <a asp-controller="Like" asp-action="AddFavorite" asp-route-id="@i.Id" type="submit" class="btn btn-danger align-self-bottom"><img src="~/images/heart.png" style="width: 25%" /></a>
                 </div>
             </div>
         }
